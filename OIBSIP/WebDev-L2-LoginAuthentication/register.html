@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureAuth — Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="register">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay hidden" id="loading-overlay">
+    <div class="spinner-ring"></div>
+  </div>
+
+  <div class="auth-wrapper">
+
+    <!-- ── Hero / Branding Panel ── -->
+    <section class="auth-hero" aria-hidden="true">
+      <div class="hero-content">
+
+        <div class="hero-logo">
+          <div class="hero-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="hero-logo-text">Secure<span>Auth</span></span>
+        </div>
+
+        <h1 class="hero-tagline">Join thousands<br />of secure users.</h1>
+        <p class="hero-sub">
+          Create your free account in seconds. Your password is hashed with
+          PBKDF2 — we can never see it, and neither can anyone else.
+        </p>
+
+        <div class="hero-art">
+          <div class="shield-bg">
+            <i class="fa-solid fa-user-shield shield-icon"></i>
+          </div>
+          <div class="hero-badge" style="top:8px;right:-8px;">
+            <span class="dot"></span>Free Forever
+          </div>
+          <div class="hero-badge" style="bottom:16px;left:-24px;">
+            <span class="dot"></span>No Credit Card
+          </div>
+          <div class="hero-badge" style="top:72px;left:-32px;">
+            <span class="dot"></span>Instant Access
+          </div>
+        </div>
+
+        <ul class="hero-features">
+          <li class="hero-feature">
+            <i class="fa-solid fa-key"></i>
+            <span>Passwords hashed locally before storage</span>
+          </li>
+          <li class="hero-feature">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Unique cryptographic salt per account</span>
+          </li>
+          <li class="hero-feature">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Live password strength feedback</span>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ── Form Panel ── -->
+    <main class="auth-form-panel">
+      <div class="auth-card">
+
+        <!-- Mobile logo -->
+        <div class="auth-card-logo">
+          <div class="auth-card-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="auth-card-logo-text">Secure<span>Auth</span></span>
+        </div>
+
+        <h2 class="auth-title">Create account</h2>
+        <p class="auth-subtitle">Start your secure journey today — it's free</p>
+
+        <!-- Alert box -->
+        <div id="register-alert" class="alert hidden" role="alert"></div>
+
+        <form id="register-form" novalidate autocomplete="off">
+
+          <!-- Full name -->
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Full name</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-user input-icon"></i>
+              <input
+                type="text"
+                id="reg-name"
+                name="name"
+                class="form-input"
+                placeholder="Jane Doe"
+                autocomplete="name"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email address</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input
+                type="email"
+                id="reg-email"
+                name="email"
+                class="form-input"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Password with strength meter -->
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input
+                type="password"
+                id="reg-password"
+                name="password"
+                class="form-input"
+                placeholder="Create a strong password"
+                autocomplete="new-password"
+                required
+              />
+              <button type="button" class="btn-eye" id="toggle-reg-password" aria-label="Toggle password visibility">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+
+            <!-- Strength meter -->
+            <div class="strength-meter" id="strength-meter">
+              <div class="strength-bars">
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+              </div>
+              <div class="strength-label" id="strength-label"></div>
+              <ul class="strength-reqs">
+                <li class="strength-req" id="req-length">
+                  <i class="req-icon fa-solid fa-circle"></i>
+                  <span>At least 8 characters</span>
+                </li>
+                <li class="strength-req" id="req-number">
+                  <i class="req-icon fa-solid fa-circle"></i>
+                  <span>At least one number</span>
+                </li>
+                <li class="strength-req" id="req-uppercase">
+                  <i class="req-icon fa-solid fa-circle"></i>
+                  <span>At least one uppercase letter</span>
+                </li>
+                <li class="strength-req" id="req-lowercase">
+                  <i class="req-icon fa-solid fa-circle"></i>
+                  <span>At least one lowercase letter</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm">Confirm password</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-lock-open input-icon"></i>
+              <input
+                type="password"
+                id="reg-confirm"
+                name="confirm"
+                class="form-input"
+                placeholder="Repeat your password"
+                autocomplete="new-password"
+                required
+              />
+              <button type="button" class="btn-eye" id="toggle-reg-confirm" aria-label="Toggle confirm password visibility">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary" id="register-btn" style="margin-top:.5rem">
+            <div class="btn-spinner"></div>
+            <span class="btn-label">
+              <i class="fa-solid fa-user-plus"></i>&nbsp; Create Account
+            </span>
+          </button>
+
+        </form>
+
+        <div class="divider">or</div>
+
+        <p class="auth-footer">
+          Already have an account?&nbsp;
+          <a href="index.html">Sign in</a>
+        </p>
+
+      </div>
+    </main>
+
+  </div><!-- /.auth-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>

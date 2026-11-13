@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A tribute to Marie Curie — physicist, chemist, and two-time Nobel Prize laureate who changed the world of science forever." />
+  <title>Marie Curie — Pioneer of Radioactivity</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-initials">MC</span>
+        <span class="logo-name">Marie Curie</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#timeline" class="nav-link">Timeline</a></li>
+        <li><a href="#quotes"   class="nav-link">Quotes</a></li>
+        <li><a href="#legacy"   class="nav-link">Legacy</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════ HERO ══════════════════════════════════ -->
+  <header class="hero" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content animate-fade-up">
+
+      <div class="hero-image-wrapper">
+        <div class="hero-image-frame">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Marie_Curie_c1920.jpg/800px-Marie_Curie_c1920.jpg"
+            alt="Marie Curie, circa 1920 — photograph from Wikimedia Commons"
+            class="hero-image"
+            onerror="this.style.display='none'; document.getElementById('img-fallback').style.display='flex';"
+          />
+          <div class="hero-image-fallback" id="img-fallback">
+            <span>MC</span>
+          </div>
+        </div>
+        <p class="image-credit">
+          Photograph c. 1920 · <a href="https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · Public Domain
+        </p>
+      </div>
+
+      <div class="hero-text">
+        <p class="hero-eyebrow">1867 – 1934</p>
+        <h1 class="hero-title">Marie Curie</h1>
+        <p class="hero-tagline">Pioneer of Radioactivity &nbsp;·&nbsp; Two-Time Nobel Laureate &nbsp;·&nbsp; Breaking Barriers Since 1867</p>
+        <div class="hero-badges">
+          <span class="badge">Nobel — Physics 1903</span>
+          <span class="badge">Nobel — Chemistry 1911</span>
+          <span class="badge">First Woman Professor @ Sorbonne</span>
+        </div>
+        <a href="#about" class="hero-cta">Discover Her Story</a>
+      </div>
+
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════ ABOUT ═════════════════════════════════ -->
+  <section id="about" class="section section--light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Her Story</span>
+        <h2 class="section-title">About Marie Curie</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+
+          <p class="about-paragraph">
+            Born Maria Sklodowska on November 7, 1867, in Warsaw, Poland — then under Russian imperial rule — Marie Curie grew up in a household that prized intellectual pursuit despite grinding poverty and political oppression. Her father was a mathematics and physics teacher who quietly nurtured his youngest daughter's curiosity, letting her handle scientific instruments at a time when women were largely excluded from formal education. When the Polish underground "Flying University" offered secret classes to women, the young Maria attended with fierce dedication, absorbing knowledge that the empire sought to deny her. It was an early lesson she would carry for life: that the pursuit of truth demands courage.
+          </p>
+
+          <p class="about-paragraph">
+            In 1891, at age twenty-three, she scraped together enough savings to travel to Paris and enroll at the Sorbonne — one of the very few women to do so. Living in a tiny attic room, often too cold and too hungry to concentrate, she persisted through sheer will. Within two years she had earned a degree in physics — the first woman ever to achieve that distinction at the institution — and followed it swiftly with a second degree in mathematics. It was in Paris that she met Pierre Curie, a brilliant physicist whose open-minded respect for her intellect was as striking as his scientific genius. They married in 1895 and formed one of history's great scientific partnerships: two minds pursuing the same light.
+          </p>
+
+          <p class="about-paragraph">
+            Together the Curies investigated the mysterious rays that Wilhelm Röntgen and Henri Becquerel had recently observed. Marie coined the word <em>radioactivity</em> to describe the phenomenon by which certain elements spontaneously emit energy. Working in a leaky, inadequately heated shed, she processed ton upon ton of pitchblende ore with her bare hands — not yet knowing the radiation she was handling would ultimately claim her life — and in 1898 announced the discovery of two new elements: polonium, named in honor of her homeland, and radium. These discoveries reshaped humanity's understanding of matter and energy at the atomic level, laying essential groundwork for nuclear physics and modern medicine alike.
+          </p>
+
+          <p class="about-paragraph">
+            The death of Pierre in a tragic street accident in 1906 left Marie devastated, yet she channeled grief into resolve. She accepted his professorship at the Sorbonne, becoming the first woman ever to hold a faculty position there. During World War I she designed and personally operated mobile X-ray vehicles — affectionately called <em>petites Curies</em> — that brought life-saving diagnostic imaging to the front lines. She died on July 4, 1934, from aplastic anemia, almost certainly caused by decades of radiation exposure. Her notebooks remain so radioactive that they are stored in lead-lined boxes to this day, a haunting testament to the price she paid and the depth of her dedication.
+          </p>
+
+        </div>
+
+        <aside class="about-sidebar">
+          <div class="fact-card">
+            <h3 class="fact-card__title">Quick Facts</h3>
+            <ul class="fact-list">
+              <li><span class="fact-label">Born</span><span class="fact-value">7 Nov 1867, Warsaw</span></li>
+              <li><span class="fact-label">Died</span><span class="fact-value">4 Jul 1934, France</span></li>
+              <li><span class="fact-label">Nationality</span><span class="fact-value">Polish–French</span></li>
+              <li><span class="fact-label">Fields</span><span class="fact-value">Physics, Chemistry</span></li>
+              <li><span class="fact-label">Nobel Prizes</span><span class="fact-value">2 (Physics & Chemistry)</span></li>
+              <li><span class="fact-label">Discovered</span><span class="fact-value">Polonium &amp; Radium</span></li>
+              <li><span class="fact-label">Coined</span><span class="fact-value">"Radioactivity"</span></li>
+              <li><span class="fact-label">Spouse</span><span class="fact-value">Pierre Curie (1895)</span></li>
+              <li><span class="fact-label">Children</span><span class="fact-value">Irène, Ève</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ TIMELINE ══════════════════════════════ -->
+  <section id="timeline" class="section section--gray">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Life &amp; Achievements</span>
+        <h2 class="section-title">Timeline of a Legend</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-card">
+            <span class="timeline-year">1867</span>
+            <h3 class="timeline-event">Born in Warsaw, Poland</h3>
+            <p class="timeline-desc">Maria Sklodowska enters the world on November 7th in Warsaw, then under Russian imperial occupation. Even as a child, she displays an extraordinary memory and passion for learning that sets her apart from her peers.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-card">
+            <span class="timeline-year">1891</span>
+            <h3 class="timeline-event">Arrives in Paris to Study at the Sorbonne</h3>
+            <p class="timeline-desc">With money painstakingly saved, Marie travels to Paris and enrolls at the prestigious Sorbonne University — one of a tiny handful of women brave enough to do so — beginning a journey that will transform science forever.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-card">
+            <span class="timeline-year">1893</span>
+            <h3 class="timeline-event">First Woman to Earn a Physics Degree at Sorbonne</h3>
+            <p class="timeline-desc">Despite poverty and social barriers, Marie graduates first in her class with a physics degree — a historic first for a woman at the institution. She follows this with a mathematics degree just one year later.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-card">
+            <span class="timeline-year">1895</span>
+            <h3 class="timeline-event">Marries Pierre Curie</h3>
+            <p class="timeline-desc">Marie weds fellow physicist Pierre Curie on July 26th. The marriage unites two extraordinary scientific minds; together they will produce research that changes humanity's understanding of the atom and energy itself.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-card">
+            <span class="timeline-year">1898</span>
+            <h3 class="timeline-event">Discovers Polonium and Radium</h3>
+            <p class="timeline-desc">Working tirelessly in a makeshift shed, Marie and Pierre announce the discovery of two new elements: polonium (named for her homeland) and radium. Marie coins the term <em>radioactivity</em>, introducing a concept that will anchor a new era of physics.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-card">
+            <span class="timeline-year">1903</span>
+            <h3 class="timeline-event">Nobel Prize in Physics</h3>
+            <p class="timeline-desc">The Royal Swedish Academy awards the Nobel Prize in Physics jointly to Marie Curie, Pierre Curie, and Henri Becquerel for their research on radiation. Marie becomes the first woman ever to receive a Nobel Prize.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-card">
+            <span class="timeline-year">1906</span>
+            <h3 class="timeline-event">First Female Professor at the Sorbonne</h3>
+            <p class="timeline-desc">Following Pierre's tragic death in a road accident, Marie assumes his professorship at the Sorbonne, becoming the university's first female professor. She continues her research with unwavering determination, refusing to let grief extinguish her scientific flame.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-card">
+            <span class="timeline-year">1911</span>
+            <h3 class="timeline-event">Nobel Prize in Chemistry</h3>
+            <p class="timeline-desc">Marie receives a second Nobel Prize — this time in Chemistry — for the discovery of polonium and radium and for her work on the nature of radium. She remains, to this day, the only person to have won Nobel Prizes in two distinct scientific disciplines.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-card">
+            <span class="timeline-year">1914–18</span>
+            <h3 class="timeline-event">"Petites Curies" — Mobile X-Ray Units in WWI</h3>
+            <p class="timeline-desc">During World War I, Marie develops a fleet of mobile radiography units — quickly dubbed <em>petites Curies</em> — and personally drives them to field hospitals near the front lines. These units perform over one million X-ray examinations, saving countless soldiers' lives.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-card">
+            <span class="timeline-year">1934</span>
+            <h3 class="timeline-event">Passes Away — Legacy Endures</h3>
+            <p class="timeline-desc">On July 4th, Marie Curie dies from aplastic anemia, a disease directly caused by her lifelong exposure to radiation. She departs knowing her discoveries have laid foundations for nuclear medicine, cancer treatment, and atomic theory — a legacy that continues to shape civilization.</p>
+          </div>
+        </div>
+
+      </div><!-- /.timeline -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ QUOTES ════════════════════════════════ -->
+  <section id="quotes" class="section section--dark">
+    <div class="container">
+      <div class="section-header section-header--light">
+        <span class="section-label section-label--gold">Her Words</span>
+        <h2 class="section-title section-title--light">In Her Own Voice</h2>
+        <div class="section-rule section-rule--gold"></div>
+      </div>
+
+      <div class="quotes-grid">
+
+        <figure class="quote-card">
+          <div class="quote-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="quote-text">
+            Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.
+          </blockquote>
+          <figcaption class="quote-attribution">— Marie Curie</figcaption>
+        </figure>
+
+        <figure class="quote-card">
+          <div class="quote-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="quote-text">
+            I was taught that the way of progress was neither swift nor easy. But I know that science is the greatest force for peace and human liberation.
+          </blockquote>
+          <figcaption class="quote-attribution">— Marie Curie</figcaption>
+        </figure>
+
+        <figure class="quote-card">
+          <div class="quote-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="quote-text">
+            Be less curious about people and more curious about ideas. Ideas do not grow old; they grow stronger with every mind that embraces them.
+          </blockquote>
+          <figcaption class="quote-attribution">— Marie Curie</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ LEGACY ════════════════════════════════ -->
+  <section id="legacy" class="section section--cream">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Impact &amp; Influence</span>
+        <h2 class="section-title">An Enduring Legacy</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="legacy-grid">
+
+        <article class="legacy-card">
+          <div class="legacy-icon" aria-hidden="true">⚛️</div>
+          <h3 class="legacy-card__title">Atomic Physics</h3>
+          <p class="legacy-card__desc">Marie's research on radioactivity fundamentally altered our understanding of atomic structure. Her meticulous experiments demonstrated that radiation emanated from within atoms themselves — a revolutionary insight that paved the way for quantum mechanics and nuclear physics.</p>
+        </article>
+
+        <article class="legacy-card">
+          <div class="legacy-icon" aria-hidden="true">🏥</div>
+          <h3 class="legacy-card__title">Medical Advances</h3>
+          <p class="legacy-card__desc">The discovery of radium and radioactivity directly enabled radiation therapy for cancer. Today, radiotherapy treats millions of cancer patients annually. The mobile X-ray units she pioneered during WWI became the blueprint for modern diagnostic imaging departments worldwide.</p>
+        </article>
+
+        <article class="legacy-card">
+          <div class="legacy-icon" aria-hidden="true">🔬</div>
+          <h3 class="legacy-card__title">Scientific Method</h3>
+          <p class="legacy-card__desc">Curie's approach to science — patient, rigorous, evidence-driven — set a gold standard for experimental methodology. She believed passionately in reproducibility and transparency, publishing her findings openly at a time when doing so was still considered unusual in many scientific circles.</p>
+        </article>
+
+        <article class="legacy-card">
+          <div class="legacy-icon" aria-hidden="true">👩‍🔬</div>
+          <h3 class="legacy-card__title">Women in STEM</h3>
+          <p class="legacy-card__desc">As the first woman to win a Nobel Prize — and the only person to win two in different sciences — Marie shattered the glass ceiling of academia at a time when women were actively discouraged from intellectual life. She remains the most cited female role model in science education globally.</p>
+        </article>
+
+        <article class="legacy-card">
+          <div class="legacy-icon" aria-hidden="true">🌍</div>
+          <h3 class="legacy-card__title">International Science</h3>
+          <p class="legacy-card__desc">Marie Curie helped found the International Committee on Intellectual Cooperation (precursor to UNESCO) and championed cross-border scientific collaboration. Her Radium Institute in Paris became an international hub that trained researchers from dozens of countries.</p>
+        </article>
+
+        <article class="legacy-card">
+          <div class="legacy-icon" aria-hidden="true">🏆</div>
+          <h3 class="legacy-card__title">Cultural Icon</h3>
+          <p class="legacy-card__desc">Named after her — the curie (Ci) unit of radioactivity, element 96 Curium, the Curie temperature in magnetism, and countless schools, institutes and awards. In 2009 New Scientist readers voted her the most inspirational woman in science history. Her face graced the Polish 20,000-złoty banknote.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOOTER ════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <div class="footer-logo">
+            <span class="logo-initials logo-initials--small">MC</span>
+            <span class="footer-logo-name">Marie Curie</span>
+          </div>
+          <p class="footer-tagline">Pioneer · Scientist · Trailblazer</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigate</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#quotes">Quotes</a></li>
+            <li><a href="#legacy">Legacy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Sources &amp; Credits</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/" target="_blank" rel="noopener noreferrer">Nobel Prize — Biography</a></li>
+            <li><a href="https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons — Photo</a></li>
+            <li><a href="https://www.aps.org/publications/apsnews/200112/history.cfm" target="_blank" rel="noopener noreferrer">American Physical Society</a></li>
+            <li><a href="https://www.curie.fr/en" target="_blank" rel="noopener noreferrer">Institut Curie, Paris</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">
+          Hero image: <em>Marie Curie c. 1920</em> — Public Domain via Wikimedia Commons.
+        </p>
+        <p class="footer-copy">
+          &copy; 2024 Tribute Page · Built for <strong>Oasis Infobyte</strong> Web Dev Level 2 Internship Task.
+          <br/>No copyright claimed on biographical facts. All original writing.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS: navbar scroll effect + mobile toggle -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('navbar--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-links--open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('nav-links--open');
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
+
+</body>
+</html>

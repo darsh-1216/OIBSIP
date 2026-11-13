@@ -1,0 +1,312 @@
+/* ═══════════════════════════════════════════════════════════
+   Calculator — Premium Dark Theme
+   Oasis Infobyte · Level 2
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. Custom Properties ─────────────────────────────────── */
+:root {
+  /* Palette */
+  --clr-bg-page:        #0d0d1a;
+  --clr-bg-calc:        #161625;
+  --clr-bg-display:     #111120;
+  --clr-btn-num:        #252538;
+  --clr-btn-fn:         #2e2e46;
+  --clr-accent:         #FF9F0A;
+  --clr-accent-hover:   #ffb340;
+  --clr-accent-active:  #e08800;
+  --clr-equals:         #FF9F0A;
+  --clr-equals-hover:   #ffb340;
+  --clr-text-result:    #ffffff;
+  --clr-text-expr:      #8888aa;
+  --clr-text-btn:       #e8e8f0;
+  --clr-border:         rgba(255, 255, 255, 0.07);
+  --clr-shadow:         rgba(0, 0, 0, 0.6);
+  --clr-glow:           rgba(255, 159, 10, 0.18);
+
+  /* Layout */
+  --calc-width:         min(360px, 92vw);
+  --btn-radius:         50px;
+  --btn-gap:            12px;
+  --calc-radius:        28px;
+  --display-pad:        24px 28px 20px;
+
+  /* Typography */
+  --font-main:          'Inter', system-ui, sans-serif;
+
+  /* Motion */
+  --transition-fast:    0.12s ease;
+  --transition-med:     0.22s ease;
+}
+
+/* ── 2. Reset & Base ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-family: var(--font-main);
+  font-size:   16px;
+  color-scheme: dark;
+}
+
+body {
+  min-height:       100dvh;
+  background-color: var(--clr-bg-page);
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  overflow:         hidden;
+}
+
+/* ── 3. Page Wrapper & Ambient Blobs ─────────────────────── */
+.page-wrapper {
+  position:   relative;
+  width:      100%;
+  min-height: 100dvh;
+  display:    flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+.ambient-blob {
+  position:      absolute;
+  border-radius: 50%;
+  filter:        blur(80px);
+  opacity:       0.35;
+  pointer-events:none;
+  z-index:       0;
+}
+
+.blob-1 {
+  width:      420px;
+  height:     420px;
+  background: radial-gradient(circle, #FF9F0A 0%, transparent 70%);
+  top:        -120px;
+  right:      -100px;
+  animation:  blobFloat 8s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  width:      380px;
+  height:     380px;
+  background: radial-gradient(circle, #6a4fff 0%, transparent 70%);
+  bottom:     -120px;
+  left:       -80px;
+  animation:  blobFloat 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blobFloat {
+  from { transform: translate(0, 0) scale(1);     }
+  to   { transform: translate(20px, 20px) scale(1.08); }
+}
+
+/* ── 4. Calculator Shell ──────────────────────────────────── */
+.calculator {
+  position:         relative;
+  z-index:          1;
+  width:            var(--calc-width);
+  background:       var(--clr-bg-calc);
+  border-radius:    var(--calc-radius);
+  border:           1px solid var(--clr-border);
+  box-shadow:
+    0 32px 80px var(--clr-shadow),
+    0 0 0 1px rgba(255,255,255,0.03) inset,
+    0 0 60px var(--clr-glow);
+  backdrop-filter:  blur(20px);
+  overflow:         hidden;
+  padding-bottom:   20px;
+}
+
+/* ── 5. Display ───────────────────────────────────────────── */
+.display {
+  background:    var(--clr-bg-display);
+  padding:       var(--display-pad);
+  min-height:    140px;
+  display:       flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:   flex-end;
+  gap:           6px;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.display__expression {
+  font-size:    0.82rem;
+  font-weight:  400;
+  color:        var(--clr-text-expr);
+  min-height:   1.2em;
+  word-break:   break-all;
+  text-align:   right;
+  letter-spacing: 0.03em;
+  transition:   color var(--transition-fast);
+}
+
+.display__result {
+  font-size:    clamp(2.4rem, 10vw, 3.2rem);
+  font-weight:  300;
+  color:        var(--clr-text-result);
+  word-break:   break-all;
+  text-align:   right;
+  line-height:  1.1;
+  letter-spacing: -0.02em;
+  transition:   font-size var(--transition-fast);
+}
+
+/* Shrink font when result is long */
+.display__result.shrink { font-size: clamp(1.5rem, 7vw, 2rem); }
+
+/* ── 6. Button Grid ───────────────────────────────────────── */
+.btn-grid {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:                   var(--btn-gap);
+  padding:               20px 18px 10px;
+}
+
+/* ── 7. Base Button ───────────────────────────────────────── */
+.btn {
+  position:        relative;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  height:          68px;
+  border:          none;
+  border-radius:   var(--btn-radius);
+  font-family:     var(--font-main);
+  font-size:       1.3rem;
+  font-weight:     500;
+  color:           var(--clr-text-btn);
+  cursor:          pointer;
+  outline:         none;
+  user-select:     none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background   var(--transition-fast),
+    transform    var(--transition-fast),
+    box-shadow   var(--transition-fast);
+
+  /* Subtle inset sheen */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* Ripple pseudo-element */
+.btn::after {
+  content:       '';
+  position:      absolute;
+  inset:         0;
+  border-radius: inherit;
+  background:    rgba(255,255,255,0.08);
+  opacity:       0;
+  transition:    opacity var(--transition-fast);
+}
+.btn:hover::after  { opacity: 1; }
+.btn:active::after { opacity: 0; }
+
+/* Active press */
+.btn:active {
+  transform:  scale(0.93);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+/* Focus ring (keyboard nav) */
+.btn:focus-visible {
+  outline:        3px solid var(--clr-accent);
+  outline-offset: 2px;
+}
+
+/* ── 8. Button Variants ───────────────────────────────────── */
+
+/* Number buttons */
+.btn--number {
+  background: var(--clr-btn-num);
+}
+.btn--number:hover {
+  background: #2e2e45;
+}
+
+/* Function buttons (C, +/−, %) */
+.btn--function {
+  background: var(--clr-btn-fn);
+  color:      #d0d0ee;
+}
+.btn--function:hover {
+  background: #38385a;
+}
+
+/* Operator buttons */
+.btn--operator {
+  background: rgba(255, 159, 10, 0.18);
+  color:      var(--clr-accent);
+  font-size:  1.15rem;
+  box-shadow: 0 2px 6px rgba(255,159,10,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.btn--operator:hover {
+  background: rgba(255, 159, 10, 0.3);
+  color:      var(--clr-accent-hover);
+  box-shadow: 0 4px 14px rgba(255,159,10,0.25);
+}
+
+/* Operator — active/selected state */
+.btn--operator.is-active {
+  background: var(--clr-accent);
+  color:      #1a1a2e;
+  box-shadow: 0 4px 18px rgba(255,159,10,0.4);
+}
+.btn--operator.is-active:hover {
+  background: var(--clr-accent-hover);
+}
+
+/* Equals */
+.btn--equals {
+  background: var(--clr-equals);
+  color:      #1a1a2e;
+  font-size:  1.15rem;
+  box-shadow: 0 4px 18px rgba(255,159,10,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.btn--equals:hover {
+  background: var(--clr-equals-hover);
+  box-shadow: 0 6px 24px rgba(255,159,10,0.5);
+}
+.btn--equals:active {
+  background: var(--clr-accent-active);
+}
+
+/* Backspace — subtle icon override */
+.btn--backspace {
+  font-size: 1.2rem;
+  color:     #c8b8ff;
+}
+
+/* ── 9. Keyboard Hint ─────────────────────────────────────── */
+.kbd-hint {
+  text-align:  center;
+  font-size:   0.68rem;
+  font-weight: 400;
+  color:       rgba(255,255,255,0.18);
+  letter-spacing: 0.06em;
+  padding:     4px 0 2px;
+  user-select: none;
+}
+.kbd-hint i { margin-right: 5px; }
+
+/* ── 10. Responsive ──────────────────────────────────────── */
+@media (max-width: 380px) {
+  :root {
+    --btn-gap:    9px;
+    --calc-radius:20px;
+  }
+  .btn { height: 60px; font-size: 1.1rem; }
+  .btn-grid { padding: 16px 14px 8px; }
+  .display { min-height: 120px; }
+}
+
+@media (max-height: 680px) {
+  .btn { height: 56px; }
+  .display { min-height: 110px; }
+}
+
+/* ── 11. Animation Utility ───────────────────────────────── */
+@keyframes displayPop {
+  0%   { transform: scale(1);    }
+  40%  { transform: scale(1.03); }
+  100% { transform: scale(1);    }
+}
+.display__result.pop { animation: displayPop 0.18s ease; }

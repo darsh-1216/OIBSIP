@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Stay Ahead, Stay Productive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       APP WRAPPER
+  ========================================================= -->
+  <div class="app-wrapper">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+
+      <!-- Brand -->
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <div class="brand-text">
+          <span class="brand-name">TaskFlow</span>
+          <span class="brand-tagline">Stay Ahead</span>
+        </div>
+      </div>
+
+      <!-- Filter Nav -->
+      <nav class="sidebar-nav">
+        <p class="nav-label">Views</p>
+        <button class="nav-item active" data-filter="all" aria-pressed="true">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>All Tasks</span>
+          <span class="nav-badge" id="badge-all">0</span>
+        </button>
+        <button class="nav-item" data-filter="pending" aria-pressed="false">
+          <i class="fa-solid fa-clock"></i>
+          <span>Pending</span>
+          <span class="nav-badge" id="badge-pending">0</span>
+        </button>
+        <button class="nav-item" data-filter="completed" aria-pressed="false">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Completed</span>
+          <span class="nav-badge" id="badge-completed">0</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-quote">
+          <i class="fa-solid fa-quote-left"></i>
+          <p>"The secret of getting ahead is getting started."</p>
+          <span>— Mark Twain</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ================ MOBILE HEADER ================ -->
+    <header class="mobile-header" role="banner">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle sidebar" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="mobile-brand">
+        <i class="fa-solid fa-bolt-lightning"></i>
+        <span>TaskFlow</span>
+      </div>
+    </header>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="main-content" role="main">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1 class="page-title">My Tasks</h1>
+          <p class="page-subtitle">Manage your day, one task at a time.</p>
+        </div>
+        <div class="page-header-right">
+          <div class="search-wrapper" role="search">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input
+              type="search"
+              id="searchInput"
+              class="search-input"
+              placeholder="Search tasks…"
+              autocomplete="off"
+              aria-label="Search tasks"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar" role="region" aria-label="Task statistics">
+        <div class="stat-card stat-total">
+          <div class="stat-icon"><i class="fa-solid fa-list-check"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" id="statTotal">0</span>
+            <span class="stat-label">Total</span>
+          </div>
+        </div>
+        <div class="stat-card stat-pending">
+          <div class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" id="statPending">0</span>
+            <span class="stat-label">Pending</span>
+          </div>
+        </div>
+        <div class="stat-card stat-completed">
+          <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" id="statCompleted">0</span>
+            <span class="stat-label">Completed</span>
+          </div>
+        </div>
+        <div class="stat-card stat-overdue">
+          <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" id="statOverdue">0</span>
+            <span class="stat-label">Overdue</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Task Card -->
+      <section class="add-task-card" aria-label="Add new task">
+        <div class="add-task-header">
+          <i class="fa-solid fa-circle-plus"></i>
+          <h2>Add New Task</h2>
+        </div>
+        <div class="add-task-form">
+          <div class="input-group input-group--title">
+            <label for="taskInput" class="sr-only">Task title</label>
+            <i class="fa-solid fa-pen-to-square input-icon" aria-hidden="true"></i>
+            <input
+              type="text"
+              id="taskInput"
+              class="task-title-input"
+              placeholder="What needs to be done?"
+              maxlength="200"
+              autocomplete="off"
+              aria-label="Task title"
+            />
+          </div>
+          <div class="add-task-controls">
+            <div class="input-group">
+              <label for="prioritySelect" class="control-label">
+                <i class="fa-solid fa-flag" aria-hidden="true"></i> Priority
+              </label>
+              <select id="prioritySelect" class="priority-select" aria-label="Task priority">
+                <option value="low">🟢 Low</option>
+                <option value="medium" selected>🟠 Medium</option>
+                <option value="high">🔴 High</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="dueDateInput" class="control-label">
+                <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Due Date
+              </label>
+              <input
+                type="date"
+                id="dueDateInput"
+                class="due-date-input"
+                aria-label="Due date"
+              />
+            </div>
+            <button id="addTaskBtn" class="btn btn-primary" aria-label="Add task">
+              <i class="fa-solid fa-plus" aria-hidden="true"></i>
+              <span>Add Task</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks Area -->
+      <div class="tasks-area">
+
+        <!-- Pending Tasks Section -->
+        <section class="task-section" id="pendingSection" aria-label="Pending tasks">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-dot dot-pending"></span>
+              <h2 class="section-title">Pending</h2>
+              <span class="section-badge" id="pendingBadge" aria-label="Pending task count">0</span>
+            </div>
+            <button class="btn-icon sort-btn" id="sortPendingBtn" aria-label="Sort pending tasks" title="Sort by due date">
+              <i class="fa-solid fa-arrow-up-wide-short"></i>
+            </button>
+          </div>
+
+          <!-- Empty State — Pending -->
+          <div class="empty-state" id="emptyPending" role="status" aria-live="polite">
+            <div class="empty-state-art">
+              <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <ellipse cx="100" cy="140" rx="70" ry="12" fill="#e0e7ff" opacity="0.5"/>
+                <rect x="45" y="30" width="110" height="90" rx="12" fill="#e0e7ff"/>
+                <rect x="55" y="45" width="90" height="10" rx="5" fill="#a5b4fc"/>
+                <rect x="55" y="62" width="65" height="10" rx="5" fill="#c7d2fe"/>
+                <rect x="55" y="79" width="80" height="10" rx="5" fill="#c7d2fe"/>
+                <circle cx="155" cy="38" r="18" fill="#6366f1"/>
+                <path d="M148 38 l5 5 l9-9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>All clear!</h3>
+            <p>No pending tasks. Add a new task above to get started.</p>
+          </div>
+
+          <ul class="task-list" id="pendingList" role="list" aria-label="Pending tasks list"></ul>
+        </section>
+
+        <!-- Completed Tasks Section -->
+        <section class="task-section" id="completedSection" aria-label="Completed tasks">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-dot dot-completed"></span>
+              <h2 class="section-title">Completed</h2>
+              <span class="section-badge" id="completedBadge" aria-label="Completed task count">0</span>
+            </div>
+            <button class="btn-icon" id="clearCompletedBtn" aria-label="Clear all completed tasks" title="Clear completed">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+
+          <!-- Empty State — Completed -->
+          <div class="empty-state" id="emptyCompleted" role="status" aria-live="polite">
+            <div class="empty-state-art">
+              <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <ellipse cx="100" cy="140" rx="70" ry="12" fill="#dcfce7" opacity="0.6"/>
+                <circle cx="100" cy="75" r="45" fill="#dcfce7"/>
+                <circle cx="100" cy="75" r="35" fill="#bbf7d0"/>
+                <path d="M84 75 l10 10 l22-22" stroke="#16a34a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Nothing done yet</h3>
+            <p>Complete some tasks and they'll appear here. Keep going!</p>
+          </div>
+
+          <ul class="task-list" id="completedList" role="list" aria-label="Completed tasks list"></ul>
+        </section>
+
+      </div><!-- /.tasks-area -->
+
+    </main><!-- /.main-content -->
+
+  </div><!-- /.app-wrapper -->
+
+  <!-- =============== TOAST CONTAINER =============== -->
+  <div class="toast-container" id="toastContainer" role="region" aria-label="Notifications" aria-live="polite"></div>
+
+  <!-- =============== CONFIRM MODAL =============== -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3 class="modal-title" id="modalTitle">Delete Task?</h3>
+      <p class="modal-message" id="modalMessage">This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modalCancelBtn">Cancel</button>
+        <button class="btn btn-danger" id="modalConfirmBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

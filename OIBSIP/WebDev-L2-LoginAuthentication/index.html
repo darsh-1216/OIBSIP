@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureAuth — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="login">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay hidden" id="loading-overlay">
+    <div class="spinner-ring"></div>
+  </div>
+
+  <div class="auth-wrapper">
+
+    <!-- ── Hero / Branding Panel ── -->
+    <section class="auth-hero" aria-hidden="true">
+      <div class="hero-content">
+
+        <div class="hero-logo">
+          <div class="hero-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="hero-logo-text">Secure<span>Auth</span></span>
+        </div>
+
+        <h1 class="hero-tagline">Your security is<br />our priority.</h1>
+        <p class="hero-sub">
+          A modern, encrypted authentication experience built with
+          industry-standard cryptography to keep your data safe.
+        </p>
+
+        <!-- Decorative art -->
+        <div class="hero-art">
+          <div class="shield-bg">
+            <i class="fa-solid fa-shield-halved shield-icon"></i>
+          </div>
+          <div class="hero-badge" style="top:8px;right:-8px;">
+            <span class="dot"></span>PBKDF2 Encrypted
+          </div>
+          <div class="hero-badge" style="bottom:16px;left:-24px;">
+            <span class="dot"></span>Session Protected
+          </div>
+          <div class="hero-badge" style="top:72px;left:-32px;">
+            <span class="dot"></span>Salt Hashed
+          </div>
+        </div>
+
+        <ul class="hero-features">
+          <li class="hero-feature">
+            <i class="fa-solid fa-lock"></i>
+            <span>PBKDF2 password hashing with random salts</span>
+          </li>
+          <li class="hero-feature">
+            <i class="fa-solid fa-eye-slash"></i>
+            <span>Raw passwords never stored anywhere</span>
+          </li>
+          <li class="hero-feature">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Session expires automatically on tab close</span>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ── Form Panel ── -->
+    <main class="auth-form-panel">
+      <div class="auth-card">
+
+        <!-- Mobile logo -->
+        <div class="auth-card-logo">
+          <div class="auth-card-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="auth-card-logo-text">Secure<span>Auth</span></span>
+        </div>
+
+        <h2 class="auth-title">Welcome back</h2>
+        <p class="auth-subtitle">Sign in to your account to continue</p>
+
+        <!-- Alert box -->
+        <div id="login-alert" class="alert hidden" role="alert"></div>
+
+        <form id="login-form" novalidate autocomplete="on">
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email address</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input
+                type="email"
+                id="login-email"
+                name="email"
+                class="form-input"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="form-input"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="btn-eye" id="toggle-login-password" aria-label="Toggle password visibility">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Forgot -->
+          <div class="form-row">
+            <span></span>
+            <a href="#" class="form-forgot" tabindex="-1">Forgot password?</a>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary" id="login-btn">
+            <div class="btn-spinner"></div>
+            <span class="btn-label">
+              <i class="fa-solid fa-right-to-bracket"></i>&nbsp; Sign In
+            </span>
+          </button>
+
+        </form>
+
+        <div class="divider">or</div>
+
+        <p class="auth-footer">
+          Don't have an account?&nbsp;
+          <a href="register.html">Create one for free</a>
+        </p>
+
+      </div>
+    </main>
+
+  </div><!-- /.auth-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureAuth — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-body" data-page="dashboard">
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-brand">
+      <div class="nav-brand-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      Secure<span>Auth</span>
+    </a>
+
+    <div class="nav-right">
+      <div class="nav-user">
+        <span class="nav-user-name user-name"></span>
+        <!-- Avatar populated by JS -->
+        <div class="avatar avatar-sm user-avatar" role="img" aria-label="User avatar"></div>
+      </div>
+
+      <button class="btn-logout" id="logout-btn" type="button">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Sign Out
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════ MAIN CONTENT ══════════ -->
+  <main class="dashboard-main">
+
+    <!-- Welcome Banner -->
+    <section class="welcome-banner" aria-label="Welcome banner">
+      <div class="welcome-text">
+        <h1 class="welcome-title">
+          Welcome back, <span id="welcome-name"></span>! 👋
+        </h1>
+        <p class="welcome-sub">Here's a summary of your account security and status.</p>
+      </div>
+      <div class="welcome-icon" aria-hidden="true">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+    </section>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid" aria-label="Account stats">
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-blue">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="stat-label">Account Status</div>
+        <div class="stat-value">✅ Active</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-purple">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div class="stat-label">Security Level</div>
+        <div class="stat-value">🔐 Standard</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-green">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div class="stat-label">Last Login</div>
+        <div class="stat-value" id="last-login">—</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-amber">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <div class="stat-label">Active Sessions</div>
+        <div class="stat-value">1 Active</div>
+      </div>
+
+    </div>
+
+    <!-- Content Grid: Profile card + Account details -->
+    <div class="content-grid">
+
+      <!-- Profile Card -->
+      <section class="section-card" aria-label="Profile">
+        <h2 class="section-title">
+          <i class="fa-solid fa-id-card"></i> Profile
+        </h2>
+        <div class="profile-card-inner">
+          <!-- Large Avatar -->
+          <div class="avatar avatar-xl user-avatar" role="img" aria-label="User avatar"></div>
+
+          <p class="profile-name user-name"></p>
+          <p class="profile-email user-email"></p>
+
+          <div class="security-badge">
+            <i class="fa-solid fa-lock"></i>
+            Password Protected
+          </div>
+        </div>
+      </section>
+
+      <!-- My Account Details -->
+      <section class="section-card" aria-label="Account details">
+        <h2 class="section-title">
+          <i class="fa-solid fa-user-gear"></i> My Account
+        </h2>
+        <div class="account-details">
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <i class="fa-solid fa-user"></i> Full Name
+            </span>
+            <span class="detail-val user-name"></span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <i class="fa-solid fa-envelope"></i> Email
+            </span>
+            <span class="detail-val user-email"></span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <i class="fa-solid fa-calendar-days"></i> Member Since
+            </span>
+            <span class="detail-val" id="member-since">—</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <i class="fa-solid fa-key"></i> Password
+            </span>
+            <span class="detail-val">••••••••••</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <i class="fa-solid fa-fingerprint"></i> Auth Method
+            </span>
+            <span class="detail-val">PBKDF2 (100k iterations)</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <i class="fa-solid fa-clock"></i> Last Login
+            </span>
+            <span class="detail-val" id="last-login-detail">—</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /.content-grid -->
+
+  </main>
+
+  <!-- Toast container (injected by JS) -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="script.js"></script>
+  <script>
+    // Mirror last-login to the detail row as well
+    document.addEventListener('DOMContentLoaded', () => {
+      // After dashboard init has run, copy the value
+      requestAnimationFrame(() => {
+        const src  = document.getElementById('last-login');
+        const dest = document.getElementById('last-login-detail');
+        if (src && dest) dest.textContent = src.textContent;
+      });
+    });
+  </script>
+</body>
+</html>
